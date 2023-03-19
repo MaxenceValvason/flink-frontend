@@ -69,6 +69,7 @@ const CartPage = ({ setCart, cart }) => {
       >
         Continuer les achats
       </p>
+      {/* affichage de tous les articles du paniers */}
       <div className="cart-page-content-container">
         <div>
           <h2>Panier d'achats</h2>
