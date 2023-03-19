@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SubCategories from "./SubCategories";
 
-const Categorie = ({ categorie }) => {
+const Categorie = ({ categorie, setCategorieId }) => {
   const [data, setData] = useState();
   const [isLoad, setIsLoad] = useState(false);
   const [isDeploy, setIsDeploy] = useState(false);
@@ -11,7 +11,7 @@ const Categorie = ({ categorie }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/categories/sub/${categorie._id}`
+          `https://site--maxencevalvasonflinkbackend--6dqyynyggn8p.code.run/categories/sub/${categorie._id}`
         );
         setData(response.data);
         setIsLoad(true);
@@ -26,8 +26,11 @@ const Categorie = ({ categorie }) => {
     <div>
       <div>
         <p
+          //au clic j'affiche mes sous catégories
+          className="categorie-text"
           onClick={() => {
             setIsDeploy(!isDeploy);
+            setCategorieId(categorie._id);
           }}
         >
           {categorie.name}
@@ -37,15 +40,14 @@ const Categorie = ({ categorie }) => {
         {isDeploy ? (
           <div>
             {data.map((subCategorie, index) => {
+              //je parcours mes sous catégories
               return <SubCategories key={index} subCategorie={subCategorie} />;
             })}
           </div>
         ) : null}
       </div>
     </div>
-  ) : (
-    <p>Is Loading</p>
-  );
+  ) : null;
 };
 
 export default Categorie;

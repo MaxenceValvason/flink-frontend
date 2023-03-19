@@ -4,25 +4,37 @@ const ModalAlcohol = ({ setIsAdult, setVisibleAlcoholModal }) => {
   return (
     <div className="modal-alcohol-root">
       <div className="modal-alcohol">
-        <div>
-          <p>Vérification de l'âge</p>
+        <div className="modal-alcool-header">
+          <p className="modal-alcool-title">Vérification de l'âge</p>
+          <p
+            className="modal-alcool-title"
+            onClick={() => {
+              setVisibleAlcoholModal(false);
+            }}
+          >
+            X
+          </p>
         </div>
-        <p>Pour acheter de l'alcool, vous devez avoir 18 ans ou plus</p>
+        <p className="modal-alcool-text">
+          Pour acheter de l'alcool, vous devez avoir 18 ans ou plus
+        </p>
         <button
+          className="modal-alcool-button-less"
           onClick={() => {
             setIsAdult(false);
             setVisibleAlcoholModal(false);
           }}
         >
-          J'ai moins de 18 ans.
+          <span className="modal-alcool-text-less">J'ai moins de 18 ans.</span>
         </button>
         <button
+          className="modal-alcool-button-more"
           onClick={() => {
             setIsAdult(true);
             setVisibleAlcoholModal(false);
           }}
         >
-          J'ai plus de 18 ans.
+          <span className="modal-alcool-text-more"> J'ai plus de 18 ans.</span>
         </button>
       </div>
     </div>
